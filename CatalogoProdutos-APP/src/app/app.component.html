@@ -1,0 +1,55 @@
+
+<div class="grid">
+  <div class="col-12 md:col-6 lg:col-4" *ngFor="let card of getProdutosPagina()">
+    <div class="cardGauge">
+      <div class="flex justify-content-between mb-3">
+          <div>
+              <h2 class="-mt-2">{{ card.nome }}</h2>
+              <ul>
+                <li>{{ card.descricao }}</li>
+              </ul>
+          </div>
+      </div>
+      <div class="flex justify-content-center">
+      </div>
+
+      <div class="flex align-items-center mt-3">
+        <div style="background: rgba(133, 169, 255);" class="bullet-item mr-2"></div>
+        <span class="fw-semi-bold flex-1 mb-0">Preço de Venda</span>
+        <span style="color: #85A9FF">{{ card.preco_de_venda | currency: 'BRL'}}</span>
+      </div>
+
+      <div class="flex align-items-center mb-2">
+          <div style="background: rgb(255, 204, 133);" class="bullet-item mr-2"></div>
+          <span class="fw-semi-bold flex-1 mb-0">Quantidade</span>
+          <span style="color: #FFCC85">{{ card.quantidade }}</span>
+      </div>
+      <div class="flex card-container blue-container overflow-hidden mt-4 -mb-5">
+        <div (click)="deleteProdutos(card.id)" style="width: 2rem; height: 2rem;" class="flex-none flex align-items-center justify-content-center bg-red-500 font-bold text-white mb-2 border-round"><i class="pi pi-trash"></i></div>
+        <div class="flex-grow-1 flex align-items-center justify-content-center  font-bold text-white m-2 px-5 py-3 border-round">{{ card.data_de_cadastro | date}}</div>
+        <div style="width: 2rem; height: 2rem;" class="flex-none flex align-items-center justify-content-center bg-green-500 font-bold text-white mb-2  border-round"><i class="pi pi-pencil"></i></div>
+    </div>
+    </div>
+  </div>
+</div>
+
+  <div class="flex justify-content-end flex-wrap card-container green-container">
+      <p-button class="mt-5 mr-2" *ngFor="let pagina of getPagina()" (click)="setPagina(pagina)">{{ pagina }}</p-button>
+  </div>
+
+
+
+<!-- *ngFor="let card of teste.slice((paginaAtual - 1 ) * itensPorPagina, (paginaAtual - 1) * itensPorPagina + itensPorPagina )" -->
+<!-- <p-toolbar *ngIf="totalPaginas > 1" styleClass="mt-4 gap-2">
+  <ng-template pTemplate="left">
+      <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"></button>
+  </ng-template>
+
+  <ng-template pTemplate="center">
+    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"></button>
+</ng-template>
+
+  <ng-template pTemplate="right">
+      <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+  </ng-template>
+</p-toolbar> -->

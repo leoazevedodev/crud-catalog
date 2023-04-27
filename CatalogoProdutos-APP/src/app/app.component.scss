@@ -1,0 +1,25 @@
+/* General */
+$scale:14px;                    /* main font size */ 
+$borderRadius:12px;             /* border radius of layout element e.g. card, sidebar */ 
+$transitionDuration:.2s;        /* transition duration of layout elements e.g. sidebar, overlay menus */ 
+
+.cardGauge {
+    display: flex;
+    flex-direction: column;
+    background: #141824;
+    border: 1px solid #31374a;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+    border-radius: $borderRadius;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.bullet-item {
+    height: 0.5rem;
+    width: 1.25rem;
+    border-radius: 2px;
+  }

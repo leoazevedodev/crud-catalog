@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/primeng/resources/themes/lara-light-blue/theme.css";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: white;
+    background: #0b0c13; 
+    font-family: 'Quicksand';
+    margin: 0;
+    padding: 1rem;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1.5rem 0 1rem 0;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: white;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
