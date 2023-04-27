@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leona\\Projetos\\CodeBlox\\CatalogoProdutos-API\\CatalogoProdutos-API\\CatalogoProdutos-API.csproj": {}
+    "C:\\Users\\leozi\\Projetos\\crud-catalog\\CatalogoProdutos-API\\CatalogoProdutos-API\\CatalogoProdutos-API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leona\\Projetos\\CodeBlox\\CatalogoProdutos-API\\CatalogoProdutos-API\\CatalogoProdutos-API.csproj": {
+    "C:\\Users\\leozi\\Projetos\\crud-catalog\\CatalogoProdutos-API\\CatalogoProdutos-API\\CatalogoProdutos-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leona\\Projetos\\CodeBlox\\CatalogoProdutos-API\\CatalogoProdutos-API\\CatalogoProdutos-API.csproj",
+        "projectUniqueName": "C:\\Users\\leozi\\Projetos\\crud-catalog\\CatalogoProdutos-API\\CatalogoProdutos-API\\CatalogoProdutos-API.csproj",
         "projectName": "CatalogoProdutos-API",
-        "projectPath": "C:\\Users\\leona\\Projetos\\CodeBlox\\CatalogoProdutos-API\\CatalogoProdutos-API\\CatalogoProdutos-API.csproj",
-        "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leona\\Projetos\\CodeBlox\\CatalogoProdutos-API\\CatalogoProdutos-API\\obj\\",
+        "projectPath": "C:\\Users\\leozi\\Projetos\\crud-catalog\\CatalogoProdutos-API\\CatalogoProdutos-API\\CatalogoProdutos-API.csproj",
+        "packagesPath": "C:\\Users\\leozi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\leozi\\Projetos\\crud-catalog\\CatalogoProdutos-API\\CatalogoProdutos-API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\leona\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\leozi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -42,27 +45,27 @@
           "dependencies": {
             "EntityFramework": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.4.4, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.16, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -88,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

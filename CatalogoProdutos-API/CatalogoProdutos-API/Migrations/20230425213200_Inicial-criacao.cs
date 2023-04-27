@@ -7,6 +7,8 @@ namespace CatalogoProdutos_API.Migrations
 {
     public partial class Inicialcriacao : Migration
     {
+        //Update-database -Context DataContext
+        //Add-Migration Inicial-criacao -Context DataContext
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
