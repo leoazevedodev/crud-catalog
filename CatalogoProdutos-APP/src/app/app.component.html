@@ -1,4 +1,53 @@
 
+<p-dialog [style]="{'width':'25rem'}" header="Forulario de Produto" [(visible)]="display">
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-6">
+            <p-dropdown [(ngModel)]="produto.tipo" [options]="dropdown" placeholder="Permissão">
+                <ng-template let-option pTemplate="item">
+                    <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+                </ng-template>
+            </p-dropdown>
+        </div>
+
+        <div class="col-12 md:col-6 lg:col-12">
+            <span class="p-float-label">
+                <input type="text" pInputText [(ngModel)]="produto.nome"> 
+                <label for="float-input">Nome</label>
+            </span>
+        </div>
+
+        <div class="col-12 md:col-6 lg:col-12">
+            <span class="p-float-label">
+                <input type="text" pInputText [(ngModel)]="produto.descricao"> 
+                <label for="float-input">Descrição</label>
+            </span>
+        </div>
+
+        <div class="col-12 md:col-6 lg:col-12">
+          <span class="p-float-label">
+            <p-inputNumber inputId="inputnumber" [(ngModel)]="produto.preco_de_venda"></p-inputNumber>
+            <label for="float-input">Preço de Venda</label>
+          </span>
+       </div>
+
+       <div class="col-12 md:col-6 lg:col-12">
+          <span class="p-float-label">
+            <p-inputNumber inputId="inputnumber" [(ngModel)]="produto.quantidade"></p-inputNumber>
+            <label for="float-input">Quatidade</label>
+          </span>
+        </div>
+
+    </div>
+
+<ng-template pTemplate="footer">
+<!-- <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="CloseForm()"></button> -->
+<button pButton pRipple icon="pi pi-check" type="button" label="Cadastrar" class="p-button-text" ></button>
+</ng-template>
+</p-dialog>
+
+
+<p-button type="button" (click)="abrirFormulario()" icon="pi pi-info-circle" label="Show"></p-button>
+
 <div class="grid">
   <div class="col-12 md:col-6 lg:col-4" *ngFor="let card of getProdutosPagina()">
     <div class="cardGauge">

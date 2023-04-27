@@ -79,10 +79,19 @@ export class AppComponent {
 
 
   produtos: Produtos[] = [];
+
+  produto = {} as Produtos;
+
   itensPorPagina = 5;
   totalItens = 0;
   totalPaginas = 0;
   paginaAtual = 1;
+
+  display: boolean = false;
+
+  dropdown: { label: string, value: string } [] = [];
+
+
 
 
   constructor(private produtoService: ProdutoService) { }
@@ -90,6 +99,14 @@ export class AppComponent {
   ngOnInit() 
   {
     this.getProdutos();
+    this.dropdown = [
+      {label: 'Orgânico', value: 'Orgânico'},
+      {label: 'Não Orgânico', value: 'Não Orgânico'}
+    ];
+  }
+
+  abrirFormulario() {
+    this.display = true;
   }
 
   getProdutosPagina()

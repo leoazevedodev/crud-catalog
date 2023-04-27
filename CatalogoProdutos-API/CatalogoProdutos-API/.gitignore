@@ -1,0 +1,8 @@
+# Arquivos temporários
+bin/
+obj/
+
+# Arquivos de compilação
+*.dll
+*.exe
+*.pdb
