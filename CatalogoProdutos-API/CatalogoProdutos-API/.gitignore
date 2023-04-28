@@ -1,7 +1,8 @@
 # Arquivos temporários
 bin/
 obj/
-
+.vs/
+Properties/
 # Arquivos de compilação
 *.dll
 *.exe
