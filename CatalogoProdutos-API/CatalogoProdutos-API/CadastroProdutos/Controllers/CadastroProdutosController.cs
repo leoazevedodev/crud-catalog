@@ -22,7 +22,7 @@ namespace CatalogoProdutos_API.CadastroProdutos.Controllers
             } 
             catch(Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
             }
         }
         [HttpGet]
@@ -36,7 +36,7 @@ namespace CatalogoProdutos_API.CadastroProdutos.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
             }
         }
         [HttpPost]
@@ -50,7 +50,7 @@ namespace CatalogoProdutos_API.CadastroProdutos.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
             }
         }
         [HttpPut]
@@ -64,7 +64,7 @@ namespace CatalogoProdutos_API.CadastroProdutos.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message });
             }
         }
         [HttpDelete]
@@ -78,7 +78,7 @@ namespace CatalogoProdutos_API.CadastroProdutos.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Message = ex.Message});
             }
         }
     }

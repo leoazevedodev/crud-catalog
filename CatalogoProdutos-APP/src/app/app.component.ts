@@ -1,83 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Produtos } from './produto';
 import { ProdutoService } from './produto.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [MessageService,ConfirmationService],
+  encapsulation: ViewEncapsulation.None
+
+
 })
 export class AppComponent {
-  title = 'CatalogoProdutos-APP';
-
-  teste = [
-    {
-      "id": 1,
-      "nome": "NovoProduto",
-      "preco_de_venda": 1510,
-      "descricao": "NovoProdutoUpdate",
-      "quantidade": 10,
-      "tipo": "eo",
-      "data_de_cadastro": "2023-04-25T19:23:10.6699754"
-    },
-    {
-      "id": 2,
-      "nome": "TESTE",
-      "preco_de_venda": 1544.45,
-      "descricao": "ASDASD",
-      "quantidade": 200,
-      "tipo": "ASDAS",
-      "data_de_cadastro": "2023-04-25T19:33:04.4231628"
-    },
-    {
-      "id": 2,
-      "nome": "TESTE",
-      "preco_de_venda": 1544.45,
-      "descricao": "ASDASD",
-      "quantidade": 200,
-      "tipo": "ASDAS",
-      "data_de_cadastro": "2023-04-25T19:33:04.4231628"
-    },
-    {
-      "id": 2,
-      "nome": "TESTE",
-      "preco_de_venda": 1544.45,
-      "descricao": "ASDASD",
-      "quantidade": 200,
-      "tipo": "ASDAS",
-      "data_de_cadastro": "2023-04-25T19:33:04.4231628"
-    },
-    {
-      "id": 2,
-      "nome": "TESTE",
-      "preco_de_venda": 1544.45,
-      "descricao": "ASDASD",
-      "quantidade": 200,
-      "tipo": "ASDAS",
-      "data_de_cadastro": "2023-04-25T19:33:04.4231628"
-    },
-    {
-      "id": 2,
-      "nome": "TESTE",
-      "preco_de_venda": 1544.45,
-      "descricao": "ASDASD",
-      "quantidade": 200,
-      "tipo": "ASDAS",
-      "data_de_cadastro": "2023-04-25T19:33:04.4231628"
-    },
-    {
-      "id": 2,
-      "nome": "TESTE",
-      "preco_de_venda": 1544.45,
-      "descricao": "ASDASD",
-      "quantidade": 200,
-      "tipo": "ASDAS",
-      "data_de_cadastro": "2023-04-25T19:33:04.4231628"
-    },
-    
-  ];
-
-
+  title = 'CatalogoProdutos';
+  
   produtos: Produtos[] = [];
 
   produto = {} as Produtos;
@@ -91,10 +28,14 @@ export class AppComponent {
 
   dropdown: { label: string, value: string } [] = [];
 
+  view: boolean = false;
 
 
 
-  constructor(private produtoService: ProdutoService) { }
+
+  constructor(private produtoService: ProdutoService,
+              private messageService: MessageService,
+              private confirmationService: ConfirmationService)  { }
 
   ngOnInit() 
   {
@@ -108,6 +49,20 @@ export class AppComponent {
   abrirFormulario() {
     this.display = true;
   }
+
+  fecharFormulario() {
+    this.produto = {} as Produtos;
+    this.display = false;
+  }
+
+  alterarVizualicaoTable() {
+    this.view = false;
+  }
+
+  alterarVizualicaoGrid() {
+    this.view = true;
+  }
+
 
   getProdutosPagina()
   {
@@ -139,7 +94,22 @@ export class AppComponent {
         this.totalPaginas = Math.ceil(this.totalItens / this.itensPorPagina);
       },
       (error) => {
+        let message = error.error.message;
+        this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: message } ) ;
+      }
+    )
+  }
 
+  getProduosById(id: number)
+  {
+    this.produtoService.getProdutosById(id).subscribe(
+      (response) => {
+        this.produto = response;
+        this.abrirFormulario();
+      },
+      (error) => {
+        let message = error.error.message;
+        this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: message } ) ;
       }
     )
   }
@@ -148,12 +118,80 @@ export class AppComponent {
   {
     this.produtoService.deleteProduto(id).subscribe(
       (response) => {
+        this.messageService.add( { sticky: true, severity:'success', closable: true, summary:'Produto Deletado !', detail: response.message } )
         this.getProdutos();
       },
       (error) => {
-
+        let message = error.error.message;
+        this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: message } ) ;
       }
     )
+  }
+
+  verificaCampos()
+  {
+    if(this.produto.nome == null || this.produto.nome == " ")
+    {
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Nome do produto não pode ser nulo" } ) ;
+      return;
+    } else if(this.produto.preco_de_venda == null || this.produto.preco_de_venda == 0)
+    {
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Preço de venda não pode ser nulo" } ) ;
+      return;
+    } else if(this.produto.descricao == null || this.produto.descricao == " ")
+    {
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Descrição não pode ser nula" } ) ;
+      return;
+    } else if(this.produto.tipo == null || this.produto.tipo == " ")
+    {
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Tipo do produto não pode ser nulo" } ) ;
+      return;
+    } else if(this.produto.quantidade == null || this.produto.quantidade == 0)
+    {
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Quantidade não pode ser nula" } ) ;
+      return;
+    }
+    this.adicionarProduto();
+  }
+
+  adicionarProduto()
+  {
+    this.produtoService.adicionarProduto(this.produto).subscribe(
+      (response) => {
+        this.messageService.add( { sticky: true, severity:'success', closable: true, summary:'Produto Cadastrado !', detail: response.message } )
+        this.getProdutos();
+        this.fecharFormulario();
+      },
+      (error) => {
+        let message = error.error.message;
+        this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: message } ) ;
+      }
+    )
+  }
+
+  atualizarProduto()
+  {
+    this.produtoService.atualizarProduto(this.produto).subscribe(
+      (response) => {
+        this.messageService.add( { sticky: true, severity:'success', closable: true, summary:'Produto Atualizado !', detail: response.message } )
+        this.getProdutos();
+        this.fecharFormulario();
+      },
+      (error) => {
+        let message = error.error.message;
+        this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: message } ) ;
+      }
+    )
+  }
+
+  submited(){
+    if(this.produto.id != undefined)
+    {
+      this.atualizarProduto();
+    }
+    else {
+      this.verificaCampos();
+    }
   }
 
 

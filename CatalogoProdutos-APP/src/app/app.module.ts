@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
+import {ToastModule} from 'primeng/toast';
 
 
 
@@ -33,7 +34,8 @@ import { DropdownModule } from 'primeng/dropdown';
     HttpClientModule,
     DialogModule,
     InputNumberModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

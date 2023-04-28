@@ -23,3 +23,38 @@ $transitionDuration:.2s;        /* transition duration of layout elements e.g. s
     width: 1.25rem;
     border-radius: 2px;
   }
+
+  .p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    padding: 1rem 1rem;
+    border: 1px solid #31374a;
+    border-width: 0 0 1px 0;
+    font-weight: 700;
+    color: white;
+    background: #141824;
+    transition: box-shadow 0.2s;
+ }
+
+ .p-datatable .p-datatable-tbody > tr > td {
+    text-align: left;
+    border: 1px solid #31374a;
+    border-width: 0 0 1px 0;
+    padding: 1rem 1rem;
+}
+
+.p-paginator {
+    background: #141824;
+    color: white;
+    border: solid #31374a;
+    border-width: 0;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.p-toolbar {
+    background: #141824;
+    border: 1px solid #31374a;
+    padding: 1.25rem;
+    border-radius: 6px;
+    gap: 0.5rem;
+}
