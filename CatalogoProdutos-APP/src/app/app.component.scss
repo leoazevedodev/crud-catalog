@@ -1,7 +1,6 @@
-/* General */
-$scale:14px;                    /* main font size */ 
-$borderRadius:12px;             /* border radius of layout element e.g. card, sidebar */ 
-$transitionDuration:.2s;        /* transition duration of layout elements e.g. sidebar, overlay menus */ 
+$scale:14px;               
+$borderRadius:12px;          
+$transitionDuration:.2s;      
 
 .cardGauge {
     display: flex;
@@ -22,9 +21,9 @@ $transitionDuration:.2s;        /* transition duration of layout elements e.g. s
     height: 0.5rem;
     width: 1.25rem;
     border-radius: 2px;
-  }
+}
 
-  .p-datatable .p-datatable-thead > tr > th {
+.p-datatable .p-datatable-thead > tr > th {
     text-align: left;
     padding: 1rem 1rem;
     border: 1px solid #31374a;

@@ -1,45 +1,40 @@
 <p-toast [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'800ms'" [hideTransitionOptions]="'800ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
 
 <p-dialog [closable]="false" [style]="{'width':'25rem'}" header="Formulário de Produto" [(visible)]="display">
-    <div class="grid">
-
-        <div class="mt-3 mb-3 col-12 md:col-6 lg:col-12">
-            <span class="p-float-label">
-                <input style="width: 100%;" type="text" pInputText [(ngModel)]="produto.nome"> 
-                <label for="float-input">Nome</label>
-            </span>
-        </div>
-
-        <div class="mb-3 col-12 md:col-6 lg:col-12">
-            <span class="p-float-label">
-                <input style="width: 100%;" type="text" pInputText [(ngModel)]="produto.descricao"> 
-                <label for="float-input">Descrição</label>
-            </span>
-        </div>
-
-        <div class="mb-3 col-12 md:col-6 lg:col-6">
-            <p-dropdown [(ngModel)]="produto.tipo" [options]="dropdown" placeholder="Tipo do Produto">
-                <ng-template let-option pTemplate="item">
-                    <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
-                </ng-template>
-            </p-dropdown>
-        </div>
-
-        <div class="mb-3 col-12 md:col-6 lg:col-12">
-          <span class="p-float-label">
-            <p-inputNumber inputId="inputnumber" [(ngModel)]="produto.preco_de_venda"></p-inputNumber>
-            <label for="float-input">Preço de Venda</label>
-          </span>
-       </div>
-
-       <div class="mb-3 col-12 sm:col-2 md:col-2 lg:col-2">
-          <span class="p-float-label">
-            <p-inputNumber inputId="inputnumber" [(ngModel)]="produto.quantidade"></p-inputNumber>
-            <label for="float-input">Quatidade</label>
-          </span>
-        </div>
+  <div class="grid">
+    <div class="mt-3 mb-3 col-12 md:col-6 lg:col-12">
+        <span class="p-float-label">
+            <input style="width: 100%;" type="text" pInputText [(ngModel)]="produto.nome"> 
+            <label for="float-input">Nome</label>
+        </span>
     </div>
 
+    <div class="mb-3 col-12 md:col-6 lg:col-12">
+        <span class="p-float-label">
+            <input style="width: 100%;" type="text" pInputText [(ngModel)]="produto.descricao"> 
+            <label for="float-input">Descrição</label>
+        </span>
+    </div>
+
+    <div class="mb-3 col-12 md:col-6 lg:col-6">
+        <p-dropdown [(ngModel)]="produto.tipo" [options]="dropdown" placeholder="Tipo do Produto">
+            <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+            </ng-template>
+        </p-dropdown>
+    </div>
+
+    <div class="mb-3 col-12 md:col-6 lg:col-12">
+      <p-inputNumber [(ngModel)]="produto.preco_de_venda" [showButtons]="true" placeholder="Preço de Venda" inputId="stacked" mode="currency" currency="BRL"></p-inputNumber>
+   </div>
+
+   <div class="mb-3 col-12 sm:col-2 md:col-2 lg:col-2">
+      <span class="p-float-label">
+        <p-inputNumber inputId="inputnumber" [(ngModel)]="produto.quantidade"></p-inputNumber>
+        <label for="float-input">Quatidade</label>
+      </span>
+    </div>
+  </div>
   <ng-template pTemplate="footer">
     <button (click)="submited()" pButton pRipple type="button" label="Cadastrar" class="p-button-success"></button>
     <button (click)="fecharFormulario()" pButton pRipple type="button" label="Cancelar" class="p-button-danger"></button>
@@ -47,10 +42,13 @@
 </p-dialog>
 
 <p-toolbar class="mb-3">
+
   <p-button type="button" (click)="abrirFormulario()" icon="pi pi-plus" label="Novo Produto"></p-button>
+
   <ng-container *ngIf="view == false">
     <p-button type="button" (click)="alterarVizualicaoGrid()" icon="pi pi-list"></p-button>
   </ng-container>
+
   <ng-container *ngIf="view == true">
     <p-button type="button" (click)="alterarVizualicaoTable()" icon="pi pi-th-large"></p-button>
   </ng-container>
@@ -70,15 +68,11 @@
                 </ul>
             </div>
         </div>
-        <div class="flex justify-content-center">
-        </div>
-  
         <div class="flex align-items-center mt-3">
           <div style="background: rgba(133, 169, 255);" class="bullet-item mr-2"></div>
           <span class="fw-semi-bold flex-1 mb-0">Preço de Venda</span>
           <span style="color: #85A9FF">{{ card.preco_de_venda | currency: 'BRL'}}</span>
         </div>
-  
         <div class="flex align-items-center mb-2">
             <div style="background: rgb(255, 204, 133);" class="bullet-item mr-2"></div>
             <span class="fw-semi-bold flex-1 mb-0">Quantidade</span>
@@ -88,11 +82,10 @@
           <div (click)="deleteProdutos(card.id)" style="width: 2rem; height: 2rem;" class="flex-none flex align-items-center justify-content-center bg-red-500 font-bold text-white mb-2 border-round"><i class="pi pi-trash"></i></div>
           <div class="flex-grow-1 flex align-items-center justify-content-center  font-bold text-white m-2 px-5 py-3 border-round">{{ card.data_de_cadastro | date}}</div>
           <div (click)="getProduosById(card.id)" style="width: 2rem; height: 2rem;" class="flex-none flex align-items-center justify-content-center bg-green-500 font-bold text-white mb-2  border-round"><i class="pi pi-pencil"></i></div>
-      </div>
+        </div>
       </div>
     </div>
   </div>
-
   <div class="flex justify-content-end flex-wrap card-container green-container">
     <p-button class="mt-5 mr-2" *ngFor="let pagina of getPagina()" (click)="setPagina(pagina)">{{ pagina }}</p-button>
   </div>
@@ -101,56 +94,54 @@
 <ng-container *ngIf="view == true">
   <div class="mt-3 cardGauge">
     <p-table [paginator]="true" [value]="produtos" [rows]="5" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
-  
       <ng-template pTemplate="header">
-      <tr [style]="{'text-align': 'left'}">
-          <th pSortableColumn="nome">
-              <div class="flex justify-content-start align-items-center">
-                    Nome <p-columnFilter type="text" field="nome" display="menu"></p-columnFilter><p-sortIcon field="nome"></p-sortIcon>
-              </div>
-          </th>
-          <th pSortableColumn="descricao">
-              <div class="flex justify-content-start align-items-center">
-                    Descrição <p-columnFilter type="text" field="descricao" display="menu"></p-columnFilter><p-sortIcon field="descricao"></p-sortIcon>
-              </div>
-          </th>
-          <th pSortableColumn="tipo">
-              <div class="flex justify-content-start align-items-center">
-                    Tipo <p-columnFilter type="text" field="tipo" display="menu"></p-columnFilter><p-sortIcon field="tipo"></p-sortIcon>
-              </div>
-          </th>
-          <th pSortableColumn="preco_de_venda">
-              <div class="flex justify-content-start align-items-center">
-                    Preço de Venda <p-columnFilter type="text" field="preco_de_venda" display="menu"></p-columnFilter><p-sortIcon field="preco_de_venda"></p-sortIcon>
-              </div>
-          </th>
-          <th pSortableColumn="quantidade">
-              <div class="flex justify-content-start align-items-center">
-                    Quatidade <p-columnFilter type="text" field="quantidade" display="menu"></p-columnFilter><p-sortIcon field="quantidade"></p-sortIcon>
-              </div>
-          </th>
-          <th pSortableColumn="data_de_cadastro">
-              <div class="flex justify-content-start align-items-center">
-                    Data de Cadastro <p-columnFilter type="text" field="data_de_cadastro" display="menu"></p-columnFilter><p-sortIcon field="data_de_cadastro"></p-sortIcon>
-              </div>
-          </th>
-          <th></th>
-          <th></th>
-      </tr>
+        <tr [style]="{'text-align': 'left'}">
+            <th pSortableColumn="nome">
+                <div class="flex justify-content-start align-items-center">
+                      Nome <p-columnFilter type="text" field="nome" display="menu"></p-columnFilter><p-sortIcon field="nome"></p-sortIcon>
+                </div>
+            </th>
+            <th pSortableColumn="descricao">
+                <div class="flex justify-content-start align-items-center">
+                      Descrição <p-columnFilter type="text" field="descricao" display="menu"></p-columnFilter><p-sortIcon field="descricao"></p-sortIcon>
+                </div>
+            </th>
+            <th pSortableColumn="tipo">
+                <div class="flex justify-content-start align-items-center">
+                      Tipo <p-columnFilter type="text" field="tipo" display="menu"></p-columnFilter><p-sortIcon field="tipo"></p-sortIcon>
+                </div>
+            </th>
+            <th pSortableColumn="preco_de_venda">
+                <div class="flex justify-content-start align-items-center">
+                      Preço de Venda <p-columnFilter type="text" field="preco_de_venda" display="menu"></p-columnFilter><p-sortIcon field="preco_de_venda"></p-sortIcon>
+                </div>
+            </th>
+            <th pSortableColumn="quantidade">
+                <div class="flex justify-content-start align-items-center">
+                      Quatidade <p-columnFilter type="text" field="quantidade" display="menu"></p-columnFilter><p-sortIcon field="quantidade"></p-sortIcon>
+                </div>
+            </th>
+            <th pSortableColumn="data_de_cadastro">
+                <div class="flex justify-content-start align-items-center">
+                      Data de Cadastro <p-columnFilter type="text" field="data_de_cadastro" display="menu"></p-columnFilter><p-sortIcon field="data_de_cadastro"></p-sortIcon>
+                </div>
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
       </ng-template>
   
       <ng-template pTemplate="body" let-produto>
-      <tr [style]="{'text-align': 'left', 'background': '#141824', 'color': 'white', 'border': '1px solid #31374a'}">
-          <td [style]="{'text-align': 'left '}">{{ produto.nome }}</td>
-          <td [style]="{'text-align': 'left '}">{{ produto.descricao }}</td>
-          <td [style]="{'text-align': 'left '}">{{ produto.tipo }}</td>
-          <td [style]="{'text-align': 'left '}">{{ produto.preco_de_venda | currency : 'BRL' }}</td>
-          <td [style]="{'text-align': 'left '}">{{ produto.quantidade }}</td>
-          <td [style]="{'text-align': 'left '}">{{ produto.data_de_cadastro | date }}</td>
-  
-          <td><button (click)="getProduosById(produto.id)" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button></td>
-          <td><button (click)="deleteProdutos(produto.id)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button></td>
-      </tr>
+        <tr [style]="{'text-align': 'left', 'background': '#141824', 'color': 'white', 'border': '1px solid #31374a'}">
+            <td [style]="{'text-align': 'left '}">{{ produto.nome }}</td>
+            <td [style]="{'text-align': 'left '}">{{ produto.descricao }}</td>
+            <td [style]="{'text-align': 'left '}">{{ produto.tipo }}</td>
+            <td [style]="{'text-align': 'left '}">{{ produto.preco_de_venda | currency : 'BRL' }}</td>
+            <td [style]="{'text-align': 'left '}">{{ produto.quantidade }}</td>
+            <td [style]="{'text-align': 'left '}">{{ produto.data_de_cadastro | date }}</td>
+            <td><button (click)="getProduosById(produto.id)" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success"></button></td>
+            <td><button (click)="deleteProdutos(produto.id)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button></td>
+        </tr>
       </ng-template>
     </p-table>
   </div>

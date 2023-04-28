@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import {ToastModule} from 'primeng/toast';
+import {KeyFilterModule} from 'primeng/keyfilter';
+
 
 
 
@@ -35,7 +37,8 @@ import {ToastModule} from 'primeng/toast';
     DialogModule,
     InputNumberModule,
     DropdownModule,
-    ToastModule
+    ToastModule,
+    KeyFilterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

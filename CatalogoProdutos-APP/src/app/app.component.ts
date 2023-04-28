@@ -1,13 +1,13 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Produtos } from './produto';
 import { ProdutoService } from './produto.service';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [MessageService,ConfirmationService],
+  providers: [MessageService],
   encapsulation: ViewEncapsulation.None
 
 
@@ -30,12 +30,9 @@ export class AppComponent {
 
   view: boolean = false;
 
-
-
-
   constructor(private produtoService: ProdutoService,
-              private messageService: MessageService,
-              private confirmationService: ConfirmationService)  { }
+              private messageService: MessageService
+              )  { }
 
   ngOnInit() 
   {
@@ -62,7 +59,6 @@ export class AppComponent {
   alterarVizualicaoGrid() {
     this.view = true;
   }
-
 
   getProdutosPagina()
   {
@@ -132,23 +128,23 @@ export class AppComponent {
   {
     if(this.produto.nome == null || this.produto.nome == " ")
     {
-      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Nome do produto não pode ser nulo" } ) ;
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Preencha o nome do produto corretamente" } ) ;
       return;
-    } else if(this.produto.preco_de_venda == null || this.produto.preco_de_venda == 0)
+    } else if(this.produto.preco_de_venda == null )
     {
-      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Preço de venda não pode ser nulo" } ) ;
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Preencha o preço de venda corretamente" } ) ;
       return;
     } else if(this.produto.descricao == null || this.produto.descricao == " ")
     {
-      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Descrição não pode ser nula" } ) ;
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Preencha a descricao corretamente" } ) ;
       return;
     } else if(this.produto.tipo == null || this.produto.tipo == " ")
     {
-      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Tipo do produto não pode ser nulo" } ) ;
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Tipo do produto deve ser selecionado" } ) ;
       return;
-    } else if(this.produto.quantidade == null || this.produto.quantidade == 0)
+    } else if(this.produto.quantidade == null)
     {
-      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Quantidade não pode ser nula" } ) ;
+      this.messageService.add( { sticky: true, severity:'error', closable: true, summary:'Falha de conexão com servidor', detail: "Preencha a quantidade corretamente" } ) ;
       return;
     }
     this.adicionarProduto();
